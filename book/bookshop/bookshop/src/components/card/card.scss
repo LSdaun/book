@@ -1,0 +1,58 @@
+.img-fluid-card{
+    box-shadow: 0px 24px 36px 0px #35315447;
+    width: 13.25rem;
+    height: 19.1875rem;
+    
+}
+
+.container-text {
+    height: 2.7rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-height: 0.9rem;
+}
+.card-text-book{
+    font-family: Open Sans;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #5C6A79; 
+}
+.card-title-book{
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #1C2A39;
+}
+.buy-button{
+    width: 176px;
+    height: 45px;
+    background-color: transparent;
+    border: 1px solid #4C3DB2;
+    color: #4C3DB2;
+    font-family: Montserrat;
+    font-size: 8px;
+    font-weight: 700;
+    line-height: 10px;
+}
+.card-shelf{
+    --bs-card-border-color: white !important;
+    width:424px;
+    height:300px;
+}
+.counter-circle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-size: 12px;
+}

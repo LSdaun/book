@@ -1,0 +1,58 @@
+.listItem {
+    color: var(--text-gray, #756AD3);
+    font-family: Montserrat;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    list-style-type: none;
+    margin-top: 23px;
+  }
+  
+  .categories-list {
+    width: 580px;
+    background-color: #EFEEF6;
+    display: flex;
+  }
+  .categories {
+    display: flex;
+    justify-content: space-between;
+    width: 1404px;
+  }
+  
+  .genre-list {
+    margin: 0 auto;
+    display: grid;
+    justify-content: flex-start;
+    text-align: start;
+  }
+  
+  .genre-list-item {
+    list-style-type: none;
+    margin-top: 46px;
+  }
+  
+  .active {
+    color: var(--text-black, #756AD3) !important;
+    font-size: 1rem;
+    font-weight: 700;
+    list-style-type: disc;
+    .genre-list-item-text {
+      color: var(--text-black, #1C2A39);
+    }
+  }
+  
+  .genre-list-item-text {
+    color: var(--text-gray, #5C6A79);
+  }
+  
+.cards {
+  width: 100%;
+  margin-left: -20px;
+}
+
+.cards .col-md-6 {
+  margin-bottom: 20px; 
+}
+  

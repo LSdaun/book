@@ -1,0 +1,24 @@
+.ratingCont {
+  width: 127px;
+  height: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+}
+
+.ratingReview {
+  margin: 0;
+}
+
+.starsCont {
+  width: 64px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.svgHidden {
+    position: absolute;
+    z-index: -1000;
+    opacity: 0;
+}
