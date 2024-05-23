@@ -6,7 +6,7 @@ import { Categories } from "../components/categories/categories.jsx";
 import { Promo } from "../components/promo/promo.jsx";
 import { Button } from "../components/button/button.jsx";
 import { api } from "../api/api.js";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export function Page() {
 
@@ -14,8 +14,24 @@ export function Page() {
     const handleLinkClick = (link) =>{
         setActiveGenre (link);
     }
-    // const loadMore 
-
+    const [page, setPage] = useState(1)
+    const [books, setBooks] = useState([])
+    
+    useEffect(() => {
+      const newBooks = api.getCardsInfo(page)
+      setBooks((oldBooks) => [...oldBooks, ...newBooks])
+    }, [page])
+    
+    const handleOpenNextPage = () => setPage((oldPage) => oldPage + 1)
+    
+    // return(
+    //   <div>
+    //   <div>
+    //    {books.map((book)=> <Book key={book.id} {...book} />)}
+    //   </div>
+    //   <button type="button" onClick={handleOpenNextPage}>Next page</button>
+    //   </div>
+    // )
     return (
         <div>
             <Header/>
@@ -49,7 +65,11 @@ export function Page() {
                 </div>
             </div>
             <div className="load-more">
-                <Button buttonText={"LOAD MORE"} />
+                <div>
+                    {books.map((book)=> <Book key={book.id} {...book} />)}
+                </div>
+                <Button buttonText={"LOAD MORE"}
+                onClick={handleOpenNextPage} />
             </div>
         </div>
     );
