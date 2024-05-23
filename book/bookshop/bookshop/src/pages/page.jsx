@@ -17,10 +17,12 @@ export function Page() {
     const [page, setPage] = useState(1)
     const [books, setBooks] = useState([])
     
+    const [newBooks, setNewBooks] = useState([])
+
     useEffect(() => {
-      const newBooks = api.getCardsInfo({activeGenre: activeGenre, limit: 6})
-      setBooks((oldBooks) => [...oldBooks, ...newBooks])
-    }, [page])
+          api.getCardsInfo({activeGenre: activeGenre, limit: 6}).then((result) => setNewBooks(result))
+          setBooks((oldBooks) => [...oldBooks, ...newBooks])
+        }, [page])
     
     const handleOpenNextPage = () => setPage((oldPage) => oldPage + 1)
     
