@@ -7,6 +7,7 @@ import { Promo } from "../components/promo/promo.jsx";
 import { Button } from "../components/button/button.jsx";
 import { api } from "../api/api.js";
 import React, { useState, useEffect } from 'react';
+import { Card } from "../components/card/card.jsx";
 
 export function Page() {
 
@@ -20,12 +21,22 @@ export function Page() {
     const [newBooks, setNewBooks] = useState([])
 
     useEffect(() => {
+        const loadInitialData = async () => {
+            const newBooks = await api.getCardsInfo({activeGenre: activeGenre, limit: 6});
+            setBooks(newBooks);
+        };
+
+        loadInitialData();
+    }, []);
+    useEffect(() => {
           api.getCardsInfo({activeGenre: activeGenre, limit: 6}).then((result) => setNewBooks(result))
           setBooks((oldBooks) => [...oldBooks, ...newBooks])
+          
         }, [page])
     
     const handleOpenNextPage = () => setPage((oldPage) => oldPage + 1)
-    
+    console.log(books)
+    console.log(newBooks)
     // return(
     //   <div>
     //   <div>
@@ -67,9 +78,6 @@ export function Page() {
                 </div>
             </div>
             <div className="load-more">
-                <div>
-                    {books.map((book)=> <Book key={book.id} {...book} />)}
-                </div>
                 <Button buttonText={"LOAD MORE"}
                 onClick={handleOpenNextPage} />
             </div>

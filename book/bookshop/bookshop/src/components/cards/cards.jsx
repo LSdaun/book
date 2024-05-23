@@ -3,17 +3,7 @@ import { Card } from "../card/card.jsx";
 import React, { useState, useEffect } from 'react';
 import { api } from '../../api/api';
 
-export function Cards({activeGenre, limit}) {
-    const [books, setBooks] = useState([]);
-
-    useEffect(() => {
-        const loadInitialData = async () => {
-            const newBooks = await api.getCardsInfo({activeGenre: activeGenre, limit: limit});
-            setBooks(newBooks);
-        };
-
-        loadInitialData();
-    }, []);
+export function Cards({books = []}) {
 
     return (
         <div className="row">
