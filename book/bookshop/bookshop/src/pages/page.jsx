@@ -18,7 +18,7 @@ export function Page() {
     const [books, setBooks] = useState([])
     
     useEffect(() => {
-      const newBooks = api.getCardsInfo(page)
+      const newBooks = api.getCardsInfo({activeGenre: activeGenre, limit: 6})
       setBooks((oldBooks) => [...oldBooks, ...newBooks])
     }, [page])
     
