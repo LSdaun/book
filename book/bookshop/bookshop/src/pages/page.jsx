@@ -12,42 +12,33 @@ import { Card } from "../components/card/card.jsx";
 export function Page() {
 
     const [activeGenre, setActiveGenre] = useState('Architecture');
+
+    const [page, setPage] = useState(0)
+    const [books, setBooks] = useState([])
+
     const handleLinkClick = (link) =>{
+        setPage(0); setBooks([]);
         setActiveGenre (link);
     }
-    const [page, setPage] = useState(1)
-    const [books, setBooks] = useState([])
-    
-    const [newBooks, setNewBooks] = useState([])
+    const [itemsInTheCart, setItemsInTheCart] = useState(0)
+    const handleBuyNow = () => setItemsInTheCart((oldItems) => oldItems + 1)
 
     useEffect(() => {
-        const loadInitialData = async () => {
-            const newBooks = await api.getCardsInfo({activeGenre: activeGenre, limit: 6});
-            setBooks(newBooks);
-        };
-
-        loadInitialData();
-    }, []);
-    useEffect(() => {
-          api.getCardsInfo({activeGenre: activeGenre, limit: 6}).then((result) => setNewBooks(result))
-          setBooks((oldBooks) => [...oldBooks, ...newBooks])
+        const startIndex = page > 0 ? page * 6 + 1 : 0
+        api.getCardsInfo({activeGenre: activeGenre, limit: 6, startIndex}).then((result)=> setBooks((oldBooks) => [...oldBooks, ...result]))
+      
           
-        }, [page])
+        }, [page, activeGenre])
+    
     
     const handleOpenNextPage = () => setPage((oldPage) => oldPage + 1)
     console.log(books)
-    console.log(newBooks)
-    // return(
-    //   <div>
-    //   <div>
-    //    {books.map((book)=> <Book key={book.id} {...book} />)}
-    //   </div>
-    //   <button type="button" onClick={handleOpenNextPage}>Next page</button>
-    //   </div>
-    // )
+    
+
     return (
         <div>
-            <Header/>
+            <Header
+            counter={itemsInTheCart}/>
             <Slider></Slider>
             <div className="promo-transform">
                 <div className="promo-transform--purple">
@@ -72,8 +63,8 @@ export function Page() {
                         </div>
                     </div>
                     <div className="cards-transform">
-                        <Cards activeGenre={activeGenre}
-                        limit={6}/>
+                        <Cards handleBuyNow={handleBuyNow}
+                        books={books}/>
                     </div>
                 </div>
             </div>

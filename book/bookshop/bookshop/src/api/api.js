@@ -5,9 +5,9 @@ export class Api {
         this.getCardsInfo = this.getCardsInfo.bind(this);
     }
 
-    async getCardsInfo({ activeGenre, limit }) {
+    async getCardsInfo({ activeGenre, limit, startIndex = 0}) {
         try {
-            const response = await fetch(`${this.link}volumes?q=subject:${activeGenre}&key=${this.key}&printType=books&startIndex=0&maxResults=${limit}&langRestrict=en`);
+            const response = await fetch(`${this.link}volumes?q=subject:${activeGenre}&key=${this.key}&printType=books&startIndex=${startIndex}&maxResults=${limit}&langRestrict=en`);
             const json = await response.json();
             const books = json.items || [];
             return books;

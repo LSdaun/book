@@ -3,7 +3,7 @@ import { Card } from "../card/card.jsx";
 import React, { useState, useEffect } from 'react';
 import { api } from '../../api/api';
 
-export function Cards({books = []}) {
+export function Cards({books, handleBuyNow}) {
 
     return (
         <div className="row">
@@ -26,6 +26,7 @@ export function Cards({books = []}) {
                             text={text}
                             cost={cost}
                             review={info.ratingsCount}
+                            handleBuyNow={handleBuyNow}
                         />
                     </div>
                 );

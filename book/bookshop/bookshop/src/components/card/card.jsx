@@ -2,7 +2,7 @@ import { Rating } from "../rating/rating";
 import { Button } from "../button/button.jsx";
 import React from 'react';
 
-export function Card({ image, author, title, rating, text, cost, review }) {
+export function Card({ image, author, title, rating, text, cost, review, handleBuyNow }) {
     return (
         <div className="card card-shelf mb-4">
             <div className="row g-0">
@@ -19,7 +19,8 @@ export function Card({ image, author, title, rating, text, cost, review }) {
                         <p className="container-text card-text card-text-book">{text || 'No description'}</p>
                         <p className="card-title card-title-book">{cost || 'Price not available'}</p>
                         <div>
-                            <Button buttonText={'BUY NOW'} />
+                            <Button buttonText={'BUY NOW'}
+                            onClick={handleBuyNow} />
                         </div>
                     </div>
                 </div>
