@@ -1,7 +1,7 @@
 import "./cards.scss";
 import { Card } from "../card/card.jsx";
 import React, { useState, useEffect } from 'react';
-import { api } from '../../api/api';
+
 
 export function Cards({books, handleBuyNow}) {
 

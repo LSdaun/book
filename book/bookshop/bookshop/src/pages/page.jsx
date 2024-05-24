@@ -7,7 +7,7 @@ import { Promo } from "../components/promo/promo.jsx";
 import { Button } from "../components/button/button.jsx";
 import { api } from "../api/api.js";
 import React, { useState, useEffect } from 'react';
-import { Card } from "../components/card/card.jsx";
+
 
 export function Page() {
 
