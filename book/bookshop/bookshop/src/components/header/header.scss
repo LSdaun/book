@@ -49,21 +49,33 @@
 .div-icons{
     position: absolute;
     display: flex;
+    gap: 40px;
     align-items: center;
     margin-bottom: 9.6rem;
 
 }
 .counter{
-    background: #FF353A;
-    width: 13px;
-    height: 13px;
     color: white;
     font-size: 10px;
     font-family: Montserrat;
     line-height: 12.19px;
     font-weight: 500;
+    position: absolute;
+    bottom: -6px;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FF353A;
+    width: 13px;
+    height: 13px;
     border-radius: 50%;
-    ::before
-    ::after 
+    content: "";
 }
+.cart{
+    position: relative;
+    width: 20px;
+    height: 20px;  
+}
+    
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Montserrat:wght@500;700&family=Open+Sans&display=swap');
